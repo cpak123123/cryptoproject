@@ -37,6 +37,7 @@ class Crypto:
         his = his.astype(float)
         his["timestamps"] = pd.date_range(st, et, len(his))
         return his
+    
     def to_ts(self, ms):
         target_dt = np.datetime64("1970-01-01") + np.timedelta64(ms, 'ms')
         return target_dt

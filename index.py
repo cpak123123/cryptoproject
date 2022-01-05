@@ -30,6 +30,8 @@ CONTENT_STYLE = {
 }
 
 sidebar = html.Div(
+    id="url",
+    children=
     [
         html.H2("Menu", className="display-4"),
         html.Hr(),
@@ -47,7 +49,9 @@ sidebar = html.Div(
 
 content = html.Div(id="page-content", style=CONTENT_STYLE)
 
-app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
+app.layout = html.Div(
+    sidebar
+)
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
