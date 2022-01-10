@@ -47,6 +47,10 @@ class Crypto:
         his["timestamps"] = pd.date_range(now-points[tr][1], now, len(his))
         return his
     
+    def all_ticks(self):
+        resp = requests.request("GET", base + "api/v3/exchangeInfo")
+        return resp.json()
+    
     def to_ts(self, ms):
         target_dt = np.datetime64("1970-01-01") + np.timedelta64(ms, 'ms')
         return target_dt
@@ -54,6 +58,7 @@ class Crypto:
     def to_ms(self, ts):
         ms = ts.astype(np.int64)*1000
         return ms
+
 
 """
 |DASHBOARD THINGS|
@@ -176,7 +181,8 @@ def update_figs(query, opt, interval):
 )
 def live_price(n, query):
     cp = Crypto()
-    return cp.curr_price(tick=query)
+    curr_price = cp.curr_price(tick=query)
+    return curr_price
 
 if __name__ == "__main__":
     app.run_server(debug=True)
