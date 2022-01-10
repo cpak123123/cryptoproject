@@ -5,3 +5,6 @@ First project on Github, so any comments, recommendations, and criticisms, pleas
 
 To run this project, run dashboard.py via python, and open the address on your local browser.
 As of now, it is a very simple dashboard, but I plan to add more and more layers as I continue to learn more frameworks and such.
+
+Future Plans: add crypto recommendations using some sort of content recommendation system.
+forecasting current crypto prices.
